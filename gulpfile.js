@@ -6,7 +6,7 @@ var open = require('gulp-open'); //Open a URL in Web Browser
 var browserify = require('browserify'); // Bundles JS
 var reactify = require('reactify'); // transform React JSX to JS
 var source = require('vinyl-source-stream'); // Use conventional text stream with gulp
-
+var concat = require('gulp-concat'); //Concat Files
 
 
 var config = {
@@ -16,6 +16,10 @@ var config = {
 	paths: {
 		html: './src/*.html',
 		js: './src/**/*.js',
+		css: [
+			'node_modules/bootstrap/dist/css/bootstrap.min.css',
+			'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
+		],
 		dist: './dist',
 		mainJs: './src/main.js'
 	}
@@ -49,6 +53,7 @@ gulp.task('html',function(){
 		.pipe(connect.reload());
 });
 
+//JS Task
 gulp.task('js', function(){
 
 	browserify(config.paths.mainJs)
@@ -61,11 +66,20 @@ gulp.task('js', function(){
 
 });
 
+//CSS Task
+gulp.task('css', function(){
+
+	gulp.src(config.paths.css)
+		.pipe(concat('bundle.css'))
+		.pipe(gulp.dest(config.paths.dist + '/css'));
+
+});
+
 //Watch task
 gulp.task('watch', function(){
 	gulp.watch(config.paths.html,['html']);
 	gulp.watch(config.paths.js,['js']);
 })
 
-gulp.task('default',['html', 'js','open','watch']);
+gulp.task('default',['html', 'js','css','open','watch']);
 
