@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/santhoshthepro/ReactAdminDemo/issues"
   },
-  "homepage": "https://github.com/santhoshthepro/ReactAdminDemo#readme"
+  "homepage": "https://github.com/santhoshthepro/ReactAdminDemo#readme",
+  "dependencies": {
+    "browserify": "^11.0.1",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
 }
