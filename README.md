@@ -1,4 +1,4 @@
 # ReactAdminDemo
-Demo Application created to learn ReactJS
+Demo Application on ReactJS
 
 This is a Readme File
